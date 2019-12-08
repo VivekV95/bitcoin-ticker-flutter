@@ -44,6 +44,10 @@ class _PriceScreenState extends State<PriceScreen> {
     viewModel = PriceScreenViewModel();
     currencyStream = StreamController();
     currencyStream.add(selectedCurrency);
+    setUpListeners();
+  }
+
+  void setUpListeners() {
     currencyStream.stream.listen((currency) async {
       Map<String, String> priceData =
           await viewModel.getCoinPrices(selectedCurrency);
@@ -89,7 +93,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = $btcPrice',
+                  '1 BTC = $btcPrice $selectedCurrency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -110,7 +114,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = $ethPrice',
+                  '1 ETH = $ethPrice $selectedCurrency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -131,7 +135,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = $ltcPrice',
+                  '1 LTC = $ltcPrice $selectedCurrency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
